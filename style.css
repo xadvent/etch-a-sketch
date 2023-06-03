@@ -26,22 +26,27 @@ body {
 .side {
     display: flex;
     flex-direction: column;
-    height: 350px;
+    height: 400px;
     width: 300px;
-    background-color: grey;
-    color: whitesmoke;
+    
     padding: 10px;
+}
+
+.side,
+.colorMenu {
+    color: whitesmoke;
+    background-color: grey;
     border-radius: 4px;
     border: 5px;
     border-color: black;
     border-style: solid;
+    
 }
 
 .description {
  display: flex;
  flex-direction: column;
  flex: 3;
- gap: 15px;
 }
 
 .slideContent {
@@ -65,8 +70,6 @@ body {
 }
 
 .columnDiv {
-    background-color: aqua;
-    flex-wrap: wrap;
     flex: 1;
     display: flex;
 }
@@ -74,19 +77,11 @@ body {
 .rowDiv {
     flex: 1;
     background: black;
-    flex-wrap: wrap;
-}
-
-
-.hovered {
-    background-color: yellow;
 }
 
 .color {
     background-color: white;
-    
 }
-
 p {
     margin: 5px 0px;
 }
@@ -101,7 +96,7 @@ span {
 
 
 .slideContainer {
-    width: 100%;
+    width: 90%;
 }
 .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
@@ -138,3 +133,25 @@ span {
     background: #04AA6D; /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
+
+
+  .resetButton,
+  button {
+    width: 80px;
+    margin: 10px 0px;
+    align-self: center;
+    border-radius: 10px;
+  }
+
+
+ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+
+.colorMenu {
+    background-color: grey;
+    padding: 10px;
+}
