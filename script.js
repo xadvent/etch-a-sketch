@@ -33,8 +33,11 @@ const addDrawing = function(width, startingRowDiv) {
             console.log(i)
             let classOf = this.classList; 
             classOf.add('color')
-            const audio = new Audio('click.wav')
             
+            const audio = new Audio('shutter.wav')
+            audio.volume = 0.5
+            audio.mozPreservesPitch = true;
+            audio.playbackRate = 5;
             audio.play();
         });
     }}
