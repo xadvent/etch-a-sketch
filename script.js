@@ -25,12 +25,17 @@ getGrid(32)
 const startingRowDiv = document.querySelectorAll('.rowDiv')
 const width = startingRowDiv.length
 
+
+
 const addDrawing = function(width, startingRowDiv) {
     for (let i=0; i < width; i++){
         startingRowDiv[i].addEventListener("mouseover",function(i){
             console.log(i)
             let classOf = this.classList; 
             classOf.add('color')
+            const audio = new Audio('click.wav')
+            
+            audio.play();
         });
     }}
 addDrawing(width,startingRowDiv);
@@ -52,25 +57,14 @@ const removeColor = function () {
     box.forEach(box => box.classList.remove('color'))
 }
 
-
-const colorChanger = function (color) {
-    //const fuck = document.styleSheets[0].cssRules
-    //const rules = stylesheet.cssRules[1]
-    //let elementRules = null;
-    //console.log(fuck)
-    //for (let i = 0; i< StyleSheetList[0].length; i++) {
-        //if (stylesheet.CSSRules[i].selectorText === 'color') {
-        //    elementRules = stylesheet.cssRule[i];
-       // }
-    //}
-    //elementRules.style.setProperty('background', color)
-    //console.log(elementRules)'
-
-    previous = document.querySelectorAll('.color')
-    for (i of previous){
-        i.style.backgroundColor = color;
-    }
+const random = function() {
+    random1 = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = '#' + random1
+    return randomColor
 }
+
+var r = 0, g = 0, b = 0
+
 
 
 const colorList = document.getElementById('colorList').getElementsByTagName('button')
@@ -82,10 +76,22 @@ const colorButton = document.querySelectorAll('.colorChoice')
 for (i = 0; i < colorButton.length; i++) {
     colorButton[i].addEventListener('click', function() {
         const textContent = this.textContent
-        const prev = document.querySelectorAll('.color')
-        for (single of prev) {
-            (single != 'Rainbow')
-            single.style.backgroundColor = textContent
-        }
+        const internalStyle = document.querySelector('style');
+        (textContent === "Random") ? internalStyle.innerHTML = `.color{background-color:${random()}` : 
+        (textContent != "Rainbow") ? internalStyle.innerHTML = `.color{background-color:${textContent}`: 
+        internalStyle.innerHTML = `.color{background-color:${rainbow()}}` 
     })
+}
+const rainbow = function () {
+    if (r <= 255 && g == 0 && b == 0) {r ++;}
+    if (r == 255 && b == 0 && g <= 255) {g ++;}
+    if (r == 255 && g == 255 && b <= 255) {b ++;}
+    if (b == 255 && g == 255 && r > 0) {r --;}
+    if (r == 0 && b == 255 && g > 0) {g --;}
+    if (r == 0 && g == 0 && b > 0) {b --;}
+    setTimeout(function() {
+        rainbow();
+    }, 10);
+    const internalStyle = document.querySelector('style')
+    internalStyle.innerHTML = '.color{background-color: rgb('+r+','+g+','+b+')}';
 }
